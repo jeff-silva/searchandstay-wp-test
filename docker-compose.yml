@@ -1,0 +1,34 @@
+version: '3.3'
+
+services: 
+    wordpress:
+        build: .
+        restart: always
+        ports: 
+            - 80:80
+        environment: 
+            WORDPRESS_DB_HOST: appdb
+            WORDPRESS_DB_USER: appdb
+            WORDPRESS_DB_PASSWORD: appdb
+            WORDPRESS_DB_NAME: appdb
+        volumes: 
+            - ./wp-content:/var/www/html/wp-content/
+
+    appdb:
+        image: mysql:5.7
+        restart: always
+        environment: 
+            MYSQL_DATABASE: appdb
+            MYSQL_USER: appdb
+            MYSQL_PASSWORD: appdb
+            MYSQL_RANDOM_ROOT_PASSWORD: '1'
+        volumes: 
+            - appdb:/var/lib/mysql
+        ports:
+            - 3306:3306
+
+networks: 
+    back:
+        
+volumes: 
+    appdb:

@@ -1,0 +1,8 @@
+wp-content/languages/*
+wp-content/plugins/*
+wp-content/themes/*
+wp-content/upgrade/*
+wp-content/uploads/*
+!wp-content/plugins/demo/
+!wp-content/themes/demo/
+.vscode
